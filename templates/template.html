@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ title }}</title>
+    <style>
+      html, body, * {
+        margin:0;
+        padding:0;
+      }
+
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 0;
+      }
+
+      h2 {font-size: 1.2rem }
+
+      p {font-size: 1rem}
+
+      #logo img {
+          position:absolute;
+          top:0;
+          right:0;
+          width:20%;
+      }
+
+      .receipt-header {
+          margin-top: 30px;
+          width:35%;
+      }
+
+      .receipt-header * {
+        margin-top: 10px
+      }
+
+      .receipt-header h2 span {
+        margin-top: 0;
+        float: right;
+      }
+
+      .receipt-header p span{
+        margin-top:0;
+          float: right;
+      }
+
+      .details-container {
+          margin-top: 80px;
+          width: 85%;
+          height: 200px;
+      }
+
+      .yayloh-details {
+          width: 300px;
+          height: 100%;
+            float:left;
+      }
+      .details h3 {
+        margin-bottom: 10px;
+      }
+      .details p {
+        margin-top: 5px;
+      }
+      .customer-details {
+          float:right;
+          width: 300px;
+          height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>Receipt</h1>
+
+  <div class="receipt-header">
+    <h2>Invoice Number: <span>{{ transaction_id }}</span></h2>
+    <h2>Reference ID: <span>{{ reference_id }}</span></h2>
+    <p>Date paid: <span>{{ date_paid }}</span></p>
+  </div>
+
+  <div id="logo">
+    <img src="data:image/png;base64,{{ image_base64 }}"/>
+  </div>
+
+  <div class="details-container">
+    <div class="yayloh-details details">
+      <h3>Tectry Software AB</h3>
+      <p>Armegatan 5</p>
+      <p>171 69</p>
+      <p>Solna, Sweden</p>
+      <p>SE VAT SE559225318001</p>
+      <p>info@yayloh.com</p>
+    </div>
+    <div class="customer-details details">
+      <h3>{{ payer_name }}</h3>
+      <p>{{ address_line1 }}</p>
+      {% if address_line2 %}
+        <p>{{ address_line2 }}</p>
+      {% endif %}
+      <p>{{ postal_code }}</p>
+      <p>{{ city_and_country }}</p>
+      <p>VAT {{ VAT }}</p>
+    </div>
+  </div>
+
+</html>
+  </body>
+</html>
+<html>
