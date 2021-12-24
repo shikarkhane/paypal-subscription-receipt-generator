@@ -2,8 +2,27 @@ from jinja2 import Environment, FileSystemLoader
 import pdfkit
 import os
 import base64
+import requests
+from dotenv import load_dotenv
+load_dotenv()
+headers = {
+    'Accept': 'application/json',
+    'Accept-Language': 'en_US',
+}
 
-# TODO => Call call api authentication endpoint
+data = {
+  'grant_type': 'client_credentials'
+}
+
+CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
+SECRET = os.environ.get('PAYPAL_SECRET')
+auth = (CLIENT_ID, SECRET)
+
+response = requests.post('https://api-m.sandbox.paypal.com/v1/oauth2/token',
+                         headers=headers, data=data, auth=auth)
+
+access_token = response.json()['access_token']
+
 # TODO => Grab token and call transactions endpoint
 
 # TODO => Grab Json and pull information for filling up temmplate file
@@ -48,19 +67,21 @@ with open(filename, 'w') as fh:
         reference_name = "Julie Liot",
         reference_email = "julie@smoon-lingerie.com",
     ))
-pdf_filename = os.path.join(root, 'receipts/PDF', 'receipts.pdf') 
 
-options = {
-    'page-size': 'Letter',
-    'margin-top': '0.25in',
-    'margin-right': '0.3in',
-    'margin-bottom': '0.25in',
-    'margin-left': '0.5in',
-    'encoding': "UTF-8",
-    'custom-header': [
-        ('Accept-Encoding', 'gzip')
-    ],
-    'no-outline': None
-}
+# TODO => Uncomment that when done with the API calls
+# pdf_filename = os.path.join(root, 'receipts/PDF', 'receipts.pdf') 
 
-pdfkit.from_file(filename,pdf_filename, options=options) 
+# options = {
+    # 'page-size': 'Letter',
+    # 'margin-top': '0.25in',
+    # 'margin-right': '0.3in',
+    # 'margin-bottom': '0.25in',
+    # 'margin-left': '0.5in',
+    # 'encoding': "UTF-8",
+    # 'custom-header': [
+        # ('Accept-Encoding', 'gzip')
+    # ],
+    # 'no-outline': None
+# }
+
+# pdfkit.from_file(filename,pdf_filename, options=options) 
