@@ -50,4 +50,17 @@ with open(filename, 'w') as fh:
     ))
 pdf_filename = os.path.join(root, 'receipts/PDF', 'receipts.pdf') 
 
-pdfkit.from_file(filename,pdf_filename) 
+options = {
+    'page-size': 'Letter',
+    'margin-top': '0.25in',
+    'margin-right': '0.3in',
+    'margin-bottom': '0.25in',
+    'margin-left': '0.5in',
+    'encoding': "UTF-8",
+    'custom-header': [
+        ('Accept-Encoding', 'gzip')
+    ],
+    'no-outline': None
+}
+
+pdfkit.from_file(filename,pdf_filename, options=options) 
