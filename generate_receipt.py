@@ -9,7 +9,7 @@ import base64
 # TODO => Grab Json and pull information for filling up temmplate file
 root = os.path.dirname(os.path.abspath(__file__))
 
-logo_filename = os.path.join(root, 'assets', 'yayloh-logo.png')
+logo_filename = os.path.join(root, 'assets', 'yayloh-small.png')
 
 def get_image_file_as_base64_data():
     with open(logo_filename, 'rb') as image_file:
@@ -24,23 +24,29 @@ template = env.get_template('template.html')
 # Should be called --transaction-id--.html (or something...)
 filename = os.path.join(root, 'receipts/HTML', 'receipts.html') 
 
-address_line2 = ""
-postal_code = 75003
-city_and_country = "Paris, FR"
-VAT = 12030103010
+
+payer_address_line2 = ""
+payer_postal_code = 75003
+payer_city = "Paris"
+payer_country = "France"
 with open(filename, 'w') as fh:
     fh.write(template.render(
         image_base64 = get_image_file_as_base64_data().decode(),
         title = "Receipt Company A",
-        transaction_id = "192349194919",
-        reference_id = "9034199-4912",
-        date_paid = "November 12th, 2021",
+        paypal_reference = "I-G2349194919",
+        transaction_id = "9034199-4912",
+        invoice_date = "Nov 12th, 21",
+        payment_date = "Nov 12th, 21",
+        status = "PAID",
+        balance_due ="€0.00",
         payer_name = "Company A",
-        address_line1 = "Rue les bleu 21",
-        address_line2 = address_line2 if address_line2 != "" else False,
-        postal_code = postal_code,
-        city_and_country = city_and_country,
-        VAT = VAT
+        payer_address_line1 = "Rue les bleu 21",
+        payer_address_line2 = f"{payer_postal_code} {payer_city}",
+        payer_country = payer_country,
+        total_price = "€297.00",
+        ammount_paid = "€297.00",
+        reference_name = "Julie Liot",
+        reference_email = "julie@smoon-lingerie.com",
     ))
 pdf_filename = os.path.join(root, 'receipts/PDF', 'receipts.pdf') 
 
