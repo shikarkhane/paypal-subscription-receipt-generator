@@ -7,103 +7,251 @@
     <style>
       html, body, * {
         margin:0;
-        padding:0;
+        padding:0; 
       }
 
       body{
         font-family: Arial, Helvetica, sans-serif;
-        padding: 10px 0;
+        padding: 0 15px;
       }
 
       h2 {font-size: 1.2rem }
 
-      p {font-size: 1rem}
+      p {font-size: 1.1rem}
 
-      #logo img {
-          position:absolute;
-          top:0;
-          right:0;
-          width:20%;
+      .info-container .left img {
+          width:180px;
       }
 
-      .receipt-header {
-          margin-top: 30px;
-          width:35%;
+      .info-container{
+          width: 100%;
+            height: 400px;
       }
 
-      .receipt-header * {
-        margin-top: 10px
+      .info-container .left {
+          float: left;
+          width: 50%;
+            height: 100%;
       }
 
-      .receipt-header h2 span {
-        margin-top: 0;
+      .info-container .right {
+        text-align: right;
+          float: left;
+          width: 50%;
+            height: 100%;
+      }
+
+      .info-container .right h1 {
+        font-size: 2.8rem;
+          color: #313131;
+          font-weight: 300;
+      }
+      
+      .info-container .right p {
+        font-size: 1.5rem;
+          color: #808080;
+          font-weight: 200;
+      }
+
+      .info-container .right table {
+        margin-top: 60px;
         float: right;
+        width: 380px;
       }
 
-      .receipt-header p span{
-        margin-top:0;
-          float: right;
+      .info-container .right table td{
+        padding: 10px;
+          color:#808080;
       }
 
-      .details-container {
-          margin-top: 80px;
-          width: 85%;
-          height: 200px;
+      .info-container .right table .value{
+          color:#313131;
+          padding-right: 20px;
       }
 
-      .yayloh-details {
-          width: 300px;
-          height: 100%;
-            float:left;
+      .info-container .right table tfoot {
+          background-color: #f4f4f4;
+            width: 200px;
       }
-      .details h3 {
-        margin-bottom: 10px;
+
+      .info-container .right table tfoot tr th{
+        font-size: 1.25rem;
+            padding: 10px;
+        color: #313131;
+          font-weight:bold;
       }
-      .details p {
-        margin-top: 5px;
+
+      .info-container .yayloh-info {
+        padding-left: 20px;
       }
-      .customer-details {
-          float:right;
-          width: 300px;
-          height: 100%;
+
+      .info-container .left .yayloh-info * {
+        margin-top: 2px;
+      }
+
+      .info-container .left .yayloh-info, .payer-info {
+        margin-top: 28px;
+      }
+
+      .info-container .left .yayloh-info h3 {
+        font-size: 1rem;
+      }
+
+      .info-container .payer-info {
+        padding-left: 20px;
+      }
+
+      .info-container .left .payer-info h3 {
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+
+      .info-container .left .yayloh-info p {
+        margin-top: 1px;
+        color: #313131;
+      }
+
+      .main-table-area {
+        margin-top: 105px;
+          width: 100%;
+      }
+
+      .main-table-area table{
+          width: 100%;
+      }
+
+      .main-table-area table{
+          width: 100%;
+      }
+
+      .main-table-area table thead{
+        background-color: #313131;
+          color: #fafafa;
+      }
+
+      .main-table-area table tr td{
+        padding: 15px 20px;
+      }
+
+      .main-table-area table thead td{
+        padding: 7.5px 20px;
+      }
+
+      .summary {
+        margin-top: 50px;
+        float: right;
+        padding: 10px 20px;
+      }
+
+      .summary tr td{
+        text-align: right;
+        padding: 10px 20px;
+          color: #808080;
+      }
+
+      .summary .summary-value {
+        padding-left: 100px;
+      }
+      .notes {
+        margin-top: 200px;
+          padding: 20px;
       }
     </style>
   </head>
   <body>
-  <h1>Receipt</h1>
 
-  <div class="receipt-header">
-    <h2>Invoice Number: <span>{{ transaction_id }}</span></h2>
-    <h2>Reference ID: <span>{{ reference_id }}</span></h2>
-    <p>Date paid: <span>{{ date_paid }}</span></p>
-  </div>
-
-  <div id="logo">
-    <img src="data:image/png;base64,{{ image_base64 }}"/>
-  </div>
-
-  <div class="details-container">
-    <div class="yayloh-details details">
-      <h3>Tectry Software AB</h3>
-      <p>Armegatan 5</p>
-      <p>171 69</p>
-      <p>Solna, Sweden</p>
-      <p>SE VAT SE559225318001</p>
-      <p>info@yayloh.com</p>
+  <div class="info-container">
+    <div class="left">
+      <img src="data:image/png;base64,{{ image_base64 }}"/>
+      <div class="yayloh-info">
+        <h3>Tectry software ab</h3>
+        <p>Armegatan 5, 17169 Solna, Sweden</p>
+        <p>Tax ID: SE559225318001</p>
+        <p>Website: https://yayloh.com</p>
+        <p>email: accounting@yayloh.com</p>
+      </div>
+      <div class="payer-info">
+        <p style="color: #808080">Bill To:</p>
+        <h3>{{ payer_name }}</h3>
+        <p>{{ payer_address_line1 }},</p>
+        <p>{{ payer_address_line2 }},</p>
+        <p>{{ payer_country }}</p>
+      </div>
     </div>
-    <div class="customer-details details">
-      <h3>{{ payer_name }}</h3>
-      <p>{{ address_line1 }}</p>
-      {% if address_line2 %}
-        <p>{{ address_line2 }}</p>
-      {% endif %}
-      <p>{{ postal_code }}</p>
-      <p>{{ city_and_country }}</p>
-      <p>VAT {{ VAT }}</p>
+    <div class="right">
+      <h1>INVOICE</h1>
+      <p># {{ paypal_reference }}</p>
+      <table rules="none">
+        <tbody>
+          <tr>
+            <td>Invoice Date:</td>
+            <td class="value">{{ invoice_date }}</td>
+          </tr>
+          <tr>
+            <td>Transaction ID:</td>
+            <td class="value">{{ transaction_id }}</td>
+          </tr>
+          <tr>
+            <td>Paid on:</td>
+            <td class="value">{{ payment_date }}</td>
+          </tr>
+          <tr>
+            <td>Status:</td>
+            <td class="value">{{ status }}</td>
+          </tr>
+          <tfoot>
+            <tr>
+              <th style="border-top-left-radius: 5px; border-bottom-left-radius:
+              5px;">Balance Due:</th>
+              <th class="value" style="border-top-right-radius: 5px; border-bottom-right-radius:
+              5px;">{{ balance_due }}</th>
+            </tr>
+          </tfoot>
+        </tbody>
+      </table>
     </div>
+    </div>
+    <div class="main-table-area">
+      <table rules="none">
+        <tbody>
+          <thead>
+            <td style="border-top-left-radius: 5px; border-bottom-left-radius:
+              5px;">Item</td>
+            <td>Qauntity</td>
+            <td>Rate</td>
+            <td style="border-top-right-radius: 5px; border-bottom-right-radius:
+              5px;">Amount</td>
+          </thead>
+          <tr>
+            <td><b>Quarterly Subscription - yayloh return management</b></td>
+            <td>1</td>
+            <td>{{ total_price }}</td>
+            <td>{{ total_price }}</td>
+          </tr>
+        </tbody>
+      </table>
   </div>
 
-</html>
+  <div class="summary">
+    <table>
+      <tr>
+        <td>Total</td>
+        <td class="summary-value">{{ total_price }}</td>
+      </tr>
+      <tr>
+        <td>Ammount Paid</td>
+        <td class="summary-value">{{ ammount_paid }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="notes">
+    <p>Notes:</p>
+    <p>Reference: {{ reference_name }}({{ reference_email }})</p>
+    .<br>.
+    <div style="padding: 5px 0;"></div>
+    <p>{{ ammount_paid }} was paid on {{ payment_date }}</p>
+  </div>
+
   </body>
 </html>
-<html>
