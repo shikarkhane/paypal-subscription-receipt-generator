@@ -2,4 +2,5 @@ venv/
 .env
 .vim/
 .DS_Store
+receipts/.DS_Store
 transaction_details.json
