@@ -1,34 +1,10 @@
 {
-  "prune@lespetitesjupesdeprune.com": {
-    "company_name": "Prune Boidin",
-    "reference_name": "Prune Boidin",
-    "street_address": "28 rue beaubourg",
-    "postal_code": "75003",
-    "city": "Paris",
-    "country": "France"
-  },
-  "contact@ellozze.com": {
-    "company_name": "Elloze",
-    "reference_name": "Temmim Narjisse",
-    "street_address": "35  rue du rocher",
-    "postal_code": "75008",
-    "city": "Paris 8e Arrondissement",
-    "country": "France"
-  },
-  "serina@aswearenow.co": {
-    "company_name": "AWAN",
-    "reference_name": "Anette Miwa Dimmen",
-    "street_address": "Lilleborggata 5",
-    "postal_code": "0480",
-    "city": "Oslo",
-    "country": "Norway"
-  },
-  "julie@smoon-lingerie.com": {
-    "company_name": "Smoon Lingerie",
-    "reference_name": "Juliet Liot",
-    "street_address": "71 boulevard de Strasbourg",
-    "postal_code": "75010",
-    "city": "Paris",
-    "country": "France"
+  "contact@email.com": {
+    "company_name": "Company A",
+    "reference_name": "Contact Person",
+    "street_address": "Rue de vie, 29",
+    "postal_code": "55555",
+    "city": "City",
+    "country": "Country"
   }
 }
