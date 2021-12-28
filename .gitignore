@@ -2,3 +2,4 @@ venv/
 .env
 .vim/
 .DS_Store
+transaction_details.json
