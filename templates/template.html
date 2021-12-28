@@ -164,11 +164,11 @@
     <div class="left">
       <img src="data:image/png;base64,{{ image_base64 }}"/>
       <div class="yayloh-info">
-        <h3>Tectry software ab</h3>
-        <p>Armegatan 5, 17169 Solna, Sweden</p>
-        <p>Tax ID: SE559225318001</p>
-        <p>Website: https://yayloh.com</p>
-        <p>email: accounting@yayloh.com</p>
+        <h3>{{ payee_company_name }}</h3>
+        <p>{{ payee_address }}</p>
+        <p>Tax ID: {{ payee_tax_id }}</p>
+        <p>Website: {{ payee_website}}</p>
+        <p>email: {{ payee_email }}</p>
       </div>
       <div class="payer-info">
         <p style="color: #808080">Bill To:</p>
@@ -247,7 +247,7 @@
 
   <div class="notes">
     <p>Notes:</p>
-    <p>Reference: {{ reference_name }}({{ reference_email }})</p>
+    <p>Reference: {{ reference_name }} ({{ reference_email }})</p>
     .<br>.
     <div style="padding: 5px 0;"></div>
     <p>{{ ammount_paid }} was paid on {{ payment_date }}</p>
