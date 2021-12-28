@@ -39,6 +39,7 @@ PAYEE_ADDRESS = os.environ.get('PAYEE_ADDRESS')
 PAYEE_TAX_ID = os.environ.get('PAYEE_TAX_ID')
 PAYEE_WEBSITE = os.environ.get('PAYEE_WEBSITE')
 PAYEE_EMAIL = os.environ.get('PAYEE_EMAIL')
+ITEM_DESCRIPTION = os.environ.get('ITEM_DESCRIPTION')
 
 auth = (CLIENT_ID, SECRET)
 
@@ -73,13 +74,6 @@ templates_dir = os.path.join(root, 'templates')
 env = Environment( loader = FileSystemLoader(templates_dir) )
 template = env.get_template('template.html')
 
-
-##################################################
-# This is only for testing
-# TODO -> Remove this test when running it...
-with open('transaction_details.json') as json_file:
-    transactions_array = json.load(json_file)['transaction_details']
-##################################################
 
 print(f'Found {len(transactions_array)} recepits in that range')
 for index, transaction in enumerate(transactions_array):
@@ -120,6 +114,7 @@ for index, transaction in enumerate(transactions_array):
             payee_tax_id = PAYEE_TAX_ID,
             payee_website = PAYEE_WEBSITE,
             payee_email = PAYEE_EMAIL,
+            item_description=ITEM_DESCRIPTION,
             image_base64 = get_image_file_as_base64_data().decode(),
             title = f"Receipt {payer_name}",
             paypal_reference = paypal_reference_id,
