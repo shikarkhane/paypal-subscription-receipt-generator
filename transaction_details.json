@@ -1,0 +1,282 @@
+{
+  "transaction_details": [
+    {
+      "transaction_info": {
+        "paypal_account_id": "DEKJW65ZLR786",
+        "transaction_id": "9EV12084GD858503S",
+        "paypal_reference_id": "I-4A7GTSGB6RWR",
+        "paypal_reference_id_type": "SUB",
+        "transaction_event_code": "T0002",
+        "transaction_initiation_date": "2021-09-01T09:40:43+0000",
+        "transaction_updated_date": "2021-09-01T09:40:43+0000",
+        "transaction_amount": {
+          "currency_code": "EUR",
+          "value": "297.00"
+        },
+        "fee_amount": {
+          "currency_code": "EUR",
+          "value": "-10.45"
+        },
+        "transaction_status": "S",
+        "transaction_subject": "Quarterly Euro - Grow smarter",
+        "protection_eligibility": "01",
+        "instrument_type": "PAYPAL"
+      },
+      "payer_info": {
+        "account_id": "DEKJW65ZLR786",
+        "email_address": "prune@lespetitesjupesdeprune.com",
+        "address_status": "Y",
+        "payer_status": "Y",
+        "payer_name": {
+          "given_name": "Prune",
+          "surname": "Boidin",
+          "alternate_full_name": "Prune Boidin"
+        },
+        "country_code": "FR"
+      },
+      "shipping_info": {
+        "name": "Prune, Boidin",
+        "address": {
+          "line1": "28 rue beaubourg",
+          "line2": "Prune unlimited",
+          "city": "Paris",
+          "country_code": "FR",
+          "postal_code": "75003"
+        }
+      },
+      "cart_info": {
+        "item_details": [
+          {
+            "item_quantity": "1",
+            "item_unit_price": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            },
+            "item_amount": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            },
+            "total_item_amount": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            }
+          }
+        ]
+      },
+      "store_info": {},
+      "auction_info": {},
+      "incentive_info": {}
+    },
+    {
+      "transaction_info": {
+        "paypal_account_id": "JNR976HFM6QRE",
+        "transaction_id": "8RR00502VA764033C",
+        "paypal_reference_id": "I-B6HMMAYLJRTE",
+        "paypal_reference_id_type": "SUB",
+        "transaction_event_code": "T0002",
+        "transaction_initiation_date": "2021-09-13T09:18:20+0000",
+        "transaction_updated_date": "2021-09-13T09:18:20+0000",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "120.00"
+        },
+        "fee_amount": {
+          "currency_code": "USD",
+          "value": "-4.98"
+        },
+        "transaction_status": "S",
+        "transaction_subject": "Quartely - Start bright",
+        "protection_eligibility": "01",
+        "instrument_type": "PAYPAL"
+      },
+      "payer_info": {
+        "account_id": "JNR976HFM6QRE",
+        "email_address": "contact@ellozze.com",
+        "address_status": "Y",
+        "payer_status": "Y",
+        "payer_name": {
+          "alternate_full_name": "Ellozze"
+        },
+        "country_code": "FR"
+      },
+      "shipping_info": {
+        "name": "Narjisse, Temmim",
+        "address": {
+          "line1": "35  rue du rocher ",
+          "line2": " ",
+          "city": "Paris 8e Arrondissement",
+          "country_code": "FR",
+          "postal_code": "75008"
+        }
+      },
+      "cart_info": {
+        "item_details": [
+          {
+            "item_quantity": "1",
+            "item_unit_price": {
+              "currency_code": "USD",
+              "value": "120.00"
+            },
+            "item_amount": {
+              "currency_code": "USD",
+              "value": "120.00"
+            },
+            "total_item_amount": {
+              "currency_code": "USD",
+              "value": "120.00"
+            }
+          }
+        ]
+      },
+      "store_info": {},
+      "auction_info": {},
+      "incentive_info": {}
+    },
+    {
+      "transaction_info": {
+        "paypal_account_id": "LFTW5X7VEU72A",
+        "transaction_id": "2WY67612MM858630T",
+        "paypal_reference_id": "I-S62GNCAUA83W",
+        "paypal_reference_id_type": "SUB",
+        "transaction_event_code": "T0002",
+        "transaction_initiation_date": "2021-09-15T15:24:06+0000",
+        "transaction_updated_date": "2021-09-15T15:24:06+0000",
+        "transaction_amount": {
+          "currency_code": "USD",
+          "value": "120.00"
+        },
+        "fee_amount": {
+          "currency_code": "USD",
+          "value": "-4.98"
+        },
+        "transaction_status": "S",
+        "transaction_subject": "Quartely - Start bright",
+        "protection_eligibility": "01",
+        "instrument_type": "PAYPAL"
+      },
+      "payer_info": {
+        "account_id": "LFTW5X7VEU72A",
+        "email_address": "serina@aswearenow.co",
+        "address_status": "Y",
+        "payer_status": "N",
+        "payer_name": {
+          "given_name": "Anette",
+          "surname": "Miwa Dimmen",
+          "alternate_full_name": "Anette Miwa Dimmen"
+        },
+        "country_code": "NO"
+      },
+      "shipping_info": {
+        "name": "Anette, Miwa Dimmen",
+        "address": {
+          "line1": "Lilleborggata 5",
+          "city": "Oslo",
+          "country_code": "NO",
+          "postal_code": "0480"
+        }
+      },
+      "cart_info": {
+        "item_details": [
+          {
+            "item_quantity": "1",
+            "item_unit_price": {
+              "currency_code": "USD",
+              "value": "120.00"
+            },
+            "item_amount": {
+              "currency_code": "USD",
+              "value": "120.00"
+            },
+            "total_item_amount": {
+              "currency_code": "USD",
+              "value": "120.00"
+            }
+          }
+        ]
+      },
+      "store_info": {},
+      "auction_info": {},
+      "incentive_info": {}
+    },
+    {
+      "transaction_info": {
+        "paypal_account_id": "FN7NDVLVZ53X6",
+        "transaction_id": "2YT16256JN775364F",
+        "paypal_reference_id": "I-GVH8L4M8F7UG",
+        "paypal_reference_id_type": "SUB",
+        "transaction_event_code": "T0002",
+        "transaction_initiation_date": "2021-09-27T12:46:44+0000",
+        "transaction_updated_date": "2021-09-27T12:46:44+0000",
+        "transaction_amount": {
+          "currency_code": "EUR",
+          "value": "297.00"
+        },
+        "fee_amount": {
+          "currency_code": "EUR",
+          "value": "-10.45"
+        },
+        "transaction_status": "S",
+        "transaction_subject": "Quarterly Euro - Grow smarter",
+        "protection_eligibility": "01",
+        "instrument_type": "PAYPAL"
+      },
+      "payer_info": {
+        "account_id": "FN7NDVLVZ53X6",
+        "email_address": "julie@smoon-lingerie.com",
+        "address_status": "Y",
+        "payer_status": "N",
+        "payer_name": {
+          "given_name": "JULIE",
+          "surname": "LIOT",
+          "alternate_full_name": "JULIE LIOT"
+        },
+        "country_code": "FR"
+      },
+      "shipping_info": {
+        "name": "JULIE, LIOT",
+        "address": {
+          "line1": "71 boulevard de Strasbourg",
+          "city": "PARIS",
+          "country_code": "FR",
+          "postal_code": "75010"
+        }
+      },
+      "cart_info": {
+        "item_details": [
+          {
+            "item_quantity": "1",
+            "item_unit_price": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            },
+            "item_amount": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            },
+            "total_item_amount": {
+              "currency_code": "EUR",
+              "value": "297.00"
+            }
+          }
+        ]
+      },
+      "store_info": {},
+      "auction_info": {},
+      "incentive_info": {}
+    }
+  ],
+  "account_number": "MK98MUB8GMV8E",
+  "start_date": "2021-09-01T07:00:00+0000",
+  "end_date": "2021-10-01T06:59:59+0000",
+  "last_refreshed_datetime": "2021-12-22T10:59:59+0000",
+  "page": 1,
+  "total_items": 4,
+  "total_pages": 1,
+  "links": [
+    {
+      "href": "https://api.paypal.com/v1/reporting/transactions?end_date=2021-09-30T23%3A59%3A59-0700&fields=all&transaction_type=T0002&start_date=2021-09-01T00%3A00%3A00-0700&page_size=100&page=1",
+      "rel": "self",
+      "method": "GET"
+    }
+  ]
+}
