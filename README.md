@@ -11,6 +11,7 @@ In order to run this code, you need to:
 - Install `wkhtmltopdf` locally so that pdfkit will work. Check how to do this
   [here](https://wkhtmltopdf.org/downloads.html).
 - Write your own `.env` file with all your info (See `.env.example`)
+- Setup your `payers_information.json` (Check the file for example)
 
 Read `/assets/README.md` for instructions on how to add your company's logo.
 
