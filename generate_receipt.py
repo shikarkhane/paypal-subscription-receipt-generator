@@ -20,17 +20,8 @@ def get_formatted_date(unformatted_date):
 
 currency_dict = {'USD': '$', 'EUR': '€'}
 
-load_dotenv()
-access_token_headers = {
-    'Accept': 'application/json',
-    'Accept-Language': 'en_US',
-}
-
-data = {
-  'grant_type': 'client_credentials'
-}
-
 # Loading env variables...
+load_dotenv()
 CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
 SECRET = os.environ.get('PAYPAL_SECRET')
 BASE_URL = os.environ.get('BASE_URL')
@@ -41,6 +32,17 @@ PAYEE_WEBSITE = os.environ.get('PAYEE_WEBSITE')
 PAYEE_EMAIL = os.environ.get('PAYEE_EMAIL')
 ITEM_DESCRIPTION = os.environ.get('ITEM_DESCRIPTION')
 
+
+# Grab access token
+access_token_headers = {
+    'Accept': 'application/json',
+    'Accept-Language': 'en_US',
+}
+
+data = {
+  'grant_type': 'client_credentials'
+}
+
 auth = (CLIENT_ID, SECRET)
 
 response = requests.post(f'{BASE_URL}/oauth2/token',
@@ -48,6 +50,7 @@ response = requests.post(f'{BASE_URL}/oauth2/token',
 
 access_token = response.json()['access_token']
 
+# Now use access token to grab data from the API
 transaction_headers = {
     'Content-Type': 'application/json',
     'Authorization': f'Bearer {access_token}',
@@ -55,12 +58,12 @@ transaction_headers = {
 start_date = input('Enter start date (format: YYYY-MM-DD): ')
 end_date = input('Enter end date (format: YYYY-MM-DD)): ')
 
-
 res = requests.get(f'{BASE_URL}/reporting/transactions?start_date={start_date}T00:00:00-0700&end_date={end_date}T23:59:59-0700&fields=all&page_size=100&page=1&transaction_type=T0002',
              headers=transaction_headers)
 
 transactions_array = res.json()['transaction_details']
 
+# Do the html converting stuff
 root = os.path.dirname(os.path.abspath(__file__))
 
 logo_filename = os.path.join(root, 'assets', 'logo.png')
@@ -76,16 +79,19 @@ template = env.get_template('template.html')
 
 
 print(f'Found {len(transactions_array)} recepits in that range')
+
 for index, transaction in enumerate(transactions_array):
     print(f'Printing now receipt # {index+1}')
     transaction_info = transaction['transaction_info']
 
     with open('transaction_details.json') as json_file:
-        payer_info = json.load(json_file)['transaction_details'][index]['payer_info']
+        payer_info_from_api = json.load(json_file)['transaction_details'][index]['payer_info']
 
 
+    # We need to load payers info because payer info from api is often
+    # incomplete
     with open('payers_information.json') as payer_file:
-        payer_details = json.load(payer_file)
+        payer_info_from_file = json.load(payer_file)
 
 
     paypal_reference_id =  transaction_info['paypal_reference_id']
@@ -93,16 +99,16 @@ for index, transaction in enumerate(transactions_array):
     invoice_date = get_formatted_date(transaction_info['transaction_initiation_date'])
     payment_date = get_formatted_date(transaction_info['transaction_updated_date'])
 
-    retailer = payer_details[payer_info['email_address']]
+    payer_dict = payer_info_from_file[payer_info_from_api['email_address']]
 
-    payer_name = retailer['company_name']
-    payer_address = retailer['street_address']
-    payer_reference_name = retailer['reference_name']
-    payer_reference_email = payer_info['email_address']
+    payer_name = payer_dict['company_name']
+    payer_address = payer_dict['street_address']
+    payer_reference_name = payer_dict['reference_name']
+    payer_reference_email = payer_info_from_api['email_address']
     payment_amount = transaction_info['transaction_amount']['value']
-    payer_postal_code = retailer['postal_code']
-    payer_city = retailer['city']
-    payer_country = retailer['country']
+    payer_postal_code = payer_dict['postal_code']
+    payer_city = payer_dict['city']
+    payer_country = payer_dict['country']
     currency_symbol = currency_dict[transaction_info['transaction_amount']['currency_code']]
 
     filename = os.path.join(root, 'receipts/HTML', f'{paypal_reference_id}.html') 
