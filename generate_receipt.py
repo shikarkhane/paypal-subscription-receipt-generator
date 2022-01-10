@@ -84,9 +84,12 @@ for index, transaction in enumerate(transactions_array):
     print(f'Printing now receipt # {index+1}')
     transaction_info = transaction['transaction_info']
 
-    with open('transaction_details.json') as json_file:
-        payer_info_from_api = json.load(json_file)['transaction_details'][index]['payer_info']
-
+    try:
+        with open('transaction_details.json') as json_file:
+            payer_info_from_api = json.load(json_file)['transaction_details'][index]['payer_info']
+            payer_email_address = payer_info_from_api['email_address']
+    except Exception as e:
+        payer_email_address = transaction['payer_info']['email_address']
 
     # We need to load payers info because payer info from api is often
     # incomplete
@@ -99,12 +102,12 @@ for index, transaction in enumerate(transactions_array):
     invoice_date = get_formatted_date(transaction_info['transaction_initiation_date'])
     payment_date = get_formatted_date(transaction_info['transaction_updated_date'])
 
-    payer_dict = payer_info_from_file[payer_info_from_api['email_address']]
+    payer_dict = payer_info_from_file[payer_email_address]
 
     payer_name = payer_dict['company_name']
     payer_address = payer_dict['street_address']
     payer_reference_name = payer_dict['reference_name']
-    payer_reference_email = payer_info_from_api['email_address']
+    payer_reference_email = payer_email_address
     payment_amount = transaction_info['transaction_amount']['value']
     payer_postal_code = payer_dict['postal_code']
     payer_city = payer_dict['city']
