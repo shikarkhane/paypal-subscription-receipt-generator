@@ -134,7 +134,7 @@ for index, transaction in enumerate(transactions_array):
             payer_address_line2 = f"{payer_postal_code} {payer_city}",
             payer_country = payer_country,
             total_price = f"{currency_symbol} {payment_amount}",
-            ammount_paid = f"{currency_symbol} {payment_amount}",
+            amount_paid = f"{currency_symbol} {payment_amount}",
             reference_name = payer_reference_name,
             reference_email = payer_reference_email,
         ))
