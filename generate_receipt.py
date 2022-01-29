@@ -102,7 +102,10 @@ for index, transaction in enumerate(transactions_array):
     invoice_date = get_formatted_date(transaction_info['transaction_initiation_date'])
     payment_date = get_formatted_date(transaction_info['transaction_updated_date'])
 
-    payer_dict = payer_info_from_file[payer_email_address]
+    payer_dict = payer_info_from_file.get(payer_email_address)
+    if not payer_dict:
+        print(f'Payers information missing entry for email: {payer_email_address}')
+        continue
 
     payer_name = payer_dict['company_name']
     payer_address = payer_dict['street_address']
