@@ -3,4 +3,7 @@ venv/
 .vim/
 .DS_Store
 receipts/.DS_Store
+receipts/HTML/*
+receipts/PDF/*
 transaction_details.json
+payers_information.json
