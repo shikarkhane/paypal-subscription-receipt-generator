@@ -4,7 +4,7 @@ import base64
 from jinja2 import Environment, FileSystemLoader
 
 
-CURRENCY_DICT = {'USD': '$', 'EUR': '€'}
+CURRENCY_DICT = {'USD': '$', 'EUR': '€', 'SEK': 'SEK'}
 
 
 def suffix(d):
