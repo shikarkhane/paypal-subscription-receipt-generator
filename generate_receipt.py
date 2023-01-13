@@ -38,6 +38,7 @@ class Payer:
 start_date = input("Enter start date (format: YYYY-MM-DD): ")
 end_date = input("Enter end date (format: YYYY-MM-DD)): ")
 with_vat = input("Do you want VAT (25%) info on invoice(format: yes/no))?: ")
+specific_customer = input("Specific customer(format: provide email address))?: ")
 
 payee = Payee()
 transactions = paypal.Gateway().get_invoices(start_date, end_date)
@@ -47,12 +48,13 @@ print(f"Found {len(transactions)} recepits in that range")
 pdf_writer = PdfWriter(pdfkit)
 
 for index, transaction in enumerate(transactions):
-    print(f"Printing now receipt # {index+1}")
-    payer_info = PAYER_INFO_FROM_FILE.get(transaction.payer_email_address)
-    if not payer_info:
-        print(f"Payers information missing entry for email: {transaction.payer_email_address}")
-        continue
+    if not specific_customer or specific_customer == transaction.payer_email_address:
+        print(f"Printing now receipt # {index+1}")
+        payer_info = PAYER_INFO_FROM_FILE.get(transaction.payer_email_address)
+        if not payer_info:
+            print(f"Payers information missing entry for email: {transaction.payer_email_address}")
+            continue
 
-    payer = Payer(payer_info, transaction.payer_email_address)
+        payer = Payer(payer_info, transaction.payer_email_address)
 
-    pdf_writer.write_to_pdf(payee, payer, transaction, with_vat)
+        pdf_writer.write_to_pdf(payee, payer, transaction, with_vat)

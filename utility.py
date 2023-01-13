@@ -47,7 +47,7 @@ class PdfWriter:
 
     def write_to_pdf(self, payee, payer, transaction, with_vat="no"):
 
-        filename = os.path.join(root, "receipts/HTML", f"{transaction.paypal_reference_id}.html")
+        filename = os.path.join(root, "receipts/HTML", f"{transaction.transaction_id}.html")
 
         with open(filename, "w") as fh:
             fh.write(
@@ -78,7 +78,7 @@ class PdfWriter:
                 )
             )
 
-        pdf_filename = os.path.join(root, "receipts/PDF", f"{transaction.paypal_reference_id}.pdf")
+        pdf_filename = os.path.join(root, "receipts/PDF", f"{transaction.transaction_id}.pdf")
 
         options = {
             "page-size": "Letter",
