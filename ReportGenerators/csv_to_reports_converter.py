@@ -2,6 +2,7 @@ import csv
 import os
 from collections import defaultdict
 from datetime import datetime
+from decimal import Decimal
 from jinja2 import Environment, FileSystemLoader
 from dotenv import load_dotenv
 import pdfkit
@@ -19,12 +20,12 @@ class PayoutReportGenerator:
         self.output_pdf_dir = '../receipts/PDF'
 
     def read_csv(self):
-        payouts_by_date = defaultdict(float)
+        payouts_by_date = defaultdict(Decimal)
         with open(self.csv_path, mode='r', encoding='utf-8') as file:
             csv_reader = csv.DictReader(file)
             for row in csv_reader:
                 payout_date = row['Payout Date']
-                partner_share = float(row['Partner Share'])
+                partner_share = Decimal(row['Partner Share'])
                 payouts_by_date[payout_date] += partner_share
         return payouts_by_date
 
@@ -42,7 +43,7 @@ class PayoutReportGenerator:
             bill_amount=transactions,
             serial_number_date=date_obj.strftime('%Y%b%d').upper()
         )
-        with open(file_path , 'w', encoding='utf-8') as file:
+        with open(file_path, 'w', encoding='utf-8') as file:
             file.write(html_content)
         print(f"HTML file successfully created: '{file_name}'")
 
@@ -55,7 +56,7 @@ class PayoutReportGenerator:
 # Usage
 if __name__ == "__main__":
     load_dotenv()
-    csv_file_path = input("Enter the path of the file :")
+    csv_file_path = input("Enter the path of the file :").strip('"')
     report_generator = PayoutReportGenerator(csv_file_path, '../templates', 'shopify_payout_template.html')
     payouts_by_date = report_generator.read_csv()
     report_generator.create_reports(payouts_by_date)
